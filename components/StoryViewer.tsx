@@ -1,5 +1,6 @@
 // components/StoryViewer.tsx
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Page { page_number: number; story_text: string; illustration_url: string; }
 interface StoryViewerProps { pages: Page[]; names: { name1: string; name2: string }; }
@@ -16,7 +17,7 @@ export default function StoryViewer({ pages, names }: StoryViewerProps) {
   return (
     <div className="flex h-screen w-screen flex-col bg-[#0a192f] p-4 text-white md:flex-row">
       <div className="flex flex-1 items-center justify-center p-4">
-        <img src={page.illustration_url} alt={`Illustration for page ${page.page_number}`} className="max-h-full max-w-full rounded-lg object-contain shadow-2xl"/>
+        <Image src={page.illustration_url} alt={`Illustration for page ${page.page_number}`} className="max-h-full max-w-full rounded-lg object-contain shadow-2xl" width={500} height={500}/>
       </div>
       <div className="flex flex-1 flex-col justify-center p-4 md:p-8">
         <p className="whitespace-pre-wrap text-lg leading-relaxed text-gray-300">{personalizeText(page.story_text)}</p>
